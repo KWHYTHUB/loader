@@ -4,7 +4,7 @@
 #include <loader/Log.hpp>
 #include <loader/Loader.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 void Interface::init(Mod* mod) {
 	if (!this->m_mod) {

@@ -7,9 +7,9 @@
 #include <ZipUtils.h>
 #include <utils/general.hpp>
 #include <utils/string.hpp>
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 using namespace std::string_literals;
 
 bool Mod::validateID(std::string const& id) {
@@ -30,7 +30,7 @@ bool Mod::validateID(std::string const& id) {
 
 Result<Mod*> Loader::loadModFromFile(std::string const& path) {
     // load mod.json
-    auto res = ModInfo::createFromGeodeFile(path);
+    auto res = ModInfo::createFromSapphireFile(path);
     if (!res) {
         return Err(res.error());
     }
@@ -42,7 +42,7 @@ Result<Mod*> Loader::loadModFromFile(std::string const& path) {
     
     // create and set up Mod instance
     auto mod = new Mod(res.value());
-    mod->m_saveDirPath = Loader::get()->getGeodeSaveDirectory() / GEODE_MOD_DIRECTORY / res.value().m_id;
+    mod->m_saveDirPath = Loader::get()->getSapphireSaveDirectory() / SAPPHIRE_MOD_DIRECTORY / res.value().m_id;
     mod->loadDataStore();
     ghc::filesystem::create_directories(mod->m_saveDirPath);
 

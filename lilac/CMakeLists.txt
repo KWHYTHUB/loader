@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 
 project(lilac LANGUAGES C CXX)
 
-get_property(GEODE_TARGET_PLATFORM GLOBAL PROPERTY GEODE_TARGET_PLATFORM)
+get_property(SAPPHIRE_TARGET_PLATFORM GLOBAL PROPERTY SAPPHIRE_TARGET_PLATFORM)
 
 add_subdirectory("src/hook")
 if(WIN32) # TODO: replace it with target platform
@@ -15,7 +15,7 @@ endif()
 
 target_include_directories(
     lilac_hook INTERFACE 
-    ${lilac_SOURCE_DIR}/include/geode
-    ${lilac_SOURCE_DIR}/include/geode/core
-    ${lilac_SOURCE_DIR}/include/geode/core/hook
+    ${lilac_SOURCE_DIR}/include/sapphire
+    ${lilac_SOURCE_DIR}/include/sapphire/core
+    ${lilac_SOURCE_DIR}/include/sapphire/core/hook
 )

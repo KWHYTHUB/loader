@@ -1,7 +1,7 @@
 #define EXPORT_NAME TestDependency
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-API_INIT("com.geode.testdep")
+API_INIT("com.sapphire.testdep")
 
 class TestDependency {
 public:

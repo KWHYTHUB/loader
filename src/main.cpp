@@ -6,10 +6,10 @@
 #include <Interface.hpp>
 #include "../core/Core.hpp"
 
-int geodeEntry(void* platformData);
+int sapphireEntry(void* platformData);
 // platform-specific entry points
 
-#if defined(GEODE_IS_IOS) || defined(GEODE_IS_MACOS)
+#if defined(SAPPHIRE_IS_IOS) || defined(SAPPHIRE_IS_MACOS)
 #include <mach-o/dyld.h>
 #include <unistd.h>
 
@@ -23,13 +23,13 @@ __attribute__((constructor)) void _entry() {
     ghc::filesystem::path gdpath = gddir;
     ghc::filesystem::current_path(gdpath.parent_path().parent_path());
 
-    geodeEntry(nullptr);
+    sapphireEntry(nullptr);
 }
-#elif defined(GEODE_IS_WINDOWS)
+#elif defined(SAPPHIRE_IS_WINDOWS)
 #include <Windows.h>
 
 DWORD WINAPI loadThread(void* arg) {
-    return geodeEntry(arg);
+    return sapphireEntry(arg);
 }
 
 BOOL WINAPI DllMain(HINSTANCE lib, DWORD reason, LPVOID) {
@@ -52,23 +52,23 @@ BOOL WINAPI DllMain(HINSTANCE lib, DWORD reason, LPVOID) {
 
 
 
-int geodeEntry(void* platformData) {
+int sapphireEntry(void* platformData) {
     // setup internals
 
     if (!InternalLoader::get()) {
         InternalLoader::platformMessageBox(
-            "Unable to Load Geode!",
+            "Unable to Load Sapphire!",
             "There was an unknown fatal error setting up "
-            "internal tools and Geode can not be loaded. "
+            "internal tools and Sapphire can not be loaded. "
             "(InternalLoader::get returned nullptr)"
         );
     }
 
-    if (!geode::core::hook::initialize()) {
+    if (!sapphire::core::hook::initialize()) {
         InternalLoader::platformMessageBox(
-            "Unable to load Geode!",
+            "Unable to load Sapphire!",
             "There was an unknown fatal error setting up "
-            "internal tools and Geode can not be loaded. "
+            "internal tools and Sapphire can not be loaded. "
             "(Unable to set up hook manager)"
         );
     }
@@ -76,14 +76,14 @@ int geodeEntry(void* platformData) {
     Interface::get()->init(InternalMod::get());
 
     if (!InternalLoader::get()->setup()) {
-        // if we've made it here, Geode will 
+        // if we've made it here, Sapphire will 
         // be gettable (otherwise the call to 
         // setup would've immediately crashed)
 
         InternalLoader::platformMessageBox(
-            "Unable to Load Geode!",
+            "Unable to Load Sapphire!",
             "There was an unknown fatal error setting up "
-            "internal tools and Geode can not be loaded. "
+            "internal tools and Sapphire can not be loaded. "
             "(InternalLoader::setup) returned false"
         );
         return 1;
@@ -91,14 +91,14 @@ int geodeEntry(void* platformData) {
 
     InternalMod::get()->log()
         << Severity::Debug
-        << "Loaded internal Geode class";
+        << "Loaded internal Sapphire class";
 
     // set up loader, load mods, etc.
     if (!Loader::get()->setup()) {
         InternalLoader::platformMessageBox(
-            "Unable to Load Geode!",
+            "Unable to Load Sapphire!",
             "There was an unknown fatal error setting up "
-            "the loader and Geode can not be loaded."
+            "the loader and Sapphire can not be loaded."
         );
         delete InternalLoader::get();
         return 1;
@@ -109,7 +109,7 @@ int geodeEntry(void* platformData) {
         << "Set up loader";
 
     // debugging console
-    #ifdef GEODE_PLATFORM_CONSOLE
+    #ifdef SAPPHIRE_PLATFORM_CONSOLE
     InternalMod::get()->log()
         << Severity::Debug
         << "Loading Console...";

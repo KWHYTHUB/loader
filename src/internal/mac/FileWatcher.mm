@@ -1,7 +1,7 @@
 #include <FileWatcher.hpp>
 #include <utils/platform.hpp>
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
 #import <Cocoa/Cocoa.h>
 #include <fcntl.h>

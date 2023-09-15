@@ -7,7 +7,7 @@ on:
     - '**'              # every branch
     - '!no-build-**'    # unless marked as no-build
 env:
-  GEODE_SUITE: ./suite
+  SAPPHIRE_SUITE: ./suite
 
 jobs:
   build:
@@ -19,12 +19,12 @@ jobs:
           os: windows-2019
           extra_flags: '-G "Visual Studio 16 2019" -T host=x86 -A win32'
           gen_paths:  './build/codegen/*.hpp'
-          out_paths: './build/Release/geode.dll ./build/Release/geode.lib ./build/launcher/windows/Release/XInput9_1_0.dll'
+          out_paths: './build/Release/sapphire.dll ./build/Release/sapphire.lib ./build/launcher/windows/Release/XInput9_1_0.dll'
         - name: "macOS"
           os: macos-latest
           extra_flags: "-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
           gen_paths:  './build/codegen/*.hpp'
-          out_paths: './build/Geode.dylib'
+          out_paths: './build/Sapphire.dylib'
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
 
@@ -34,7 +34,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: recursive
-        repository: geode-sdk/suite
+        repository: KWHYTHUB/suite
         ref: nightly
         path: ./suite
 
@@ -74,7 +74,7 @@ jobs:
       if: matrix.config.os == 'macos-latest'
     - name: Configure CMake
       run: |
-        cmake -B ${{ github.workspace }}/build ${{ matrix.config.extra_flags }} -DGEODE_DONT_BUILD_TEST_MODS=On -DGEODE_BUILD_UNIT_TESTS=On
+        cmake -B ${{ github.workspace }}/build ${{ matrix.config.extra_flags }} -DSAPPHIRE_DONT_BUILD_TEST_MODS=On -DSAPPHIRE_BUILD_UNIT_TESTS=On
 
     - name: Build
       run: |

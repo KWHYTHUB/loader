@@ -1,6 +1,6 @@
 #include "../crashlog.hpp"
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
 bool crashlog::setupPlatformHandler() {
     return false;

@@ -1,6 +1,6 @@
 #include "../crashlog.hpp"
 
-#ifdef GEODE_IS_IOS
+#ifdef SAPPHIRE_IS_IOS
 
 bool crashlog::setupPlatformHandler() {
     return false;

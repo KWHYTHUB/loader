@@ -1,7 +1,7 @@
 #include "MacOS.hpp"
 #include "Core.hpp"
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
 #include <mach/mach.h>
 #include <mach/task.h>
@@ -12,8 +12,8 @@
 #include <signal.h>             /* sigaction            */
 #include <sys/ucontext.h>       /* ucontext_t           */
 
-using namespace geode::core::hook;
-using namespace geode::core::impl;
+using namespace sapphire::core::hook;
+using namespace sapphire::core::impl;
 
 namespace {
     void signalHandler(int signal, siginfo_t* signal_info, void* vcontext) {

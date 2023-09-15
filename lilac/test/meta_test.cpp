@@ -1,17 +1,17 @@
-#include <geode/core/meta/function.hpp>
-#include <geode/core/meta/hook.hpp>
-#include <geode/core/meta/membercall.hpp>
-#include <geode/core/meta/optcall.hpp>
-#include <geode/core/meta/thiscall.hpp>
+#include <sapphire/core/meta/function.hpp>
+#include <sapphire/core/meta/hook.hpp>
+#include <sapphire/core/meta/membercall.hpp>
+#include <sapphire/core/meta/optcall.hpp>
+#include <sapphire/core/meta/thiscall.hpp>
 #include <iostream>
 #include <string>
 
 using namespace lilac;
 using namespace lilac::meta;
 
-#if defined(GEODE_IS_WINDOWS)
+#if defined(SAPPHIRE_IS_WINDOWS)
     #define NOINLINE __declspec(noinline)
-#elif defined(GEODE_IS_MACOS)
+#elif defined(SAPPHIRE_IS_MACOS)
     #define NOINLINE __attribute__((noinline))
 #endif
 

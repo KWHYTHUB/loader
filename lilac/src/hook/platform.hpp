@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_HOOK_PLATFORM_HPP
-#define GEODE_CORE_HOOK_PLATFORM_HPP
+#ifndef SAPPHIRE_CORE_HOOK_PLATFORM_HPP
+#define SAPPHIRE_CORE_HOOK_PLATFORM_HPP
 
 #include <cstddef>
 
@@ -33,4 +33,4 @@ namespace lilac::hook {
     };
 }
 
-#endif /* GEODE_CORE_HOOK_PLATFORM_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_PLATFORM_HPP */

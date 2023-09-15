@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 
-project(GeodeLoader VERSION 0.1.0 LANGUAGES C CXX)
+project(SapphireLoader VERSION 0.1.0 LANGUAGES C CXX)
 set(PROJECT_VERSION_TYPE Alpha)
 
-set(GEODE_NO_GEODE_FILE On)
-set(GEODE_BUILD_CODEGEN On)
-set(GEODE_NO_LINK_LOADER On)
-set(GEODE_NO_IMPLICIT_ENTRY On)
+set(SAPPHIRE_NO_SAPPHIRE_FILE On)
+set(SAPPHIRE_BUILD_CODEGEN On)
+set(SAPPHIRE_NO_LINK_LOADER On)
+set(SAPPHIRE_NO_IMPLICIT_ENTRY On)
 
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_STANDARD 17)
@@ -75,33 +75,33 @@ if (WIN32)
 	target_link_libraries(${PROJECT_NAME} dobby)
 endif()
 
-add_definitions(-DGEODE_EXPORTING -DGEODE_EXPORTING_CODEGEN)
+add_definitions(-DSAPPHIRE_EXPORTING -DSAPPHIRE_EXPORTING_CODEGEN)
 
-add_compile_definitions(GEODE_PLATFORM_CONSOLE)
-find_path(GEODE_SDK_PATH
-	NAMES Geode.cmake
-	PATHS $ENV{GEODE_SUITE}/sdk /usr/local/geode/sdk ~/.geode/sdk
-	DOC "Geode SDK path."
+add_compile_definitions(SAPPHIRE_PLATFORM_CONSOLE)
+find_path(SAPPHIRE_SDK_PATH
+	NAMES Sapphire.cmake
+	PATHS $ENV{SAPPHIRE_SUITE}/sdk /usr/local/sapphire/sdk ~/.sapphire/sdk
+	DOC "Sapphire SDK path."
 	REQUIRED
 )
 
-include(${GEODE_SDK_PATH}/Geode.cmake)
+include(${SAPPHIRE_SDK_PATH}/Sapphire.cmake)
 
-setup_geode_mod(BUILD_CODEGEN NO_LOADER NO_GEODE_FILE OUTPUT "Geode")
+setup_sapphire_mod(BUILD_CODEGEN NO_LOADER NO_SAPPHIRE_FILE OUTPUT "Sapphire")
 
 add_subdirectory(lilac)
 
 if (APPLE) 
-	if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm" OR GEODE_TARGET_PLATFORM STREQUAL "iOS")
-		add_custom_command(TARGET GeodeLoader
+	if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm" OR SAPPHIRE_TARGET_PLATFORM STREQUAL "iOS")
+		add_custom_command(TARGET SapphireLoader
 		    POST_BUILD COMMAND 
-		    ${CMAKE_INSTALL_NAME_TOOL} -id \"/Library/MobileSubstrate/DynamicLibraries/Geode.dylib\"
-		    $<TARGET_FILE:GeodeLoader>)
+		    ${CMAKE_INSTALL_NAME_TOOL} -id \"/Library/MobileSubstrate/DynamicLibraries/Sapphire.dylib\"
+		    $<TARGET_FILE:SapphireLoader>)
 	endif()
 endif()
 
 set_source_files_properties(${OBJC_SOURCES} PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-target_precompile_headers(${PROJECT_NAME} PUBLIC ${GEODE_SDK_PATH}/include/Geode.hpp)
+target_precompile_headers(${PROJECT_NAME} PUBLIC ${SAPPHIRE_SDK_PATH}/include/Sapphire.hpp)
 
 if (WIN32)
 	SET(DOBBY_GENERATE_SHARED OFF CACHE BOOL "Build dobby shared library" FORCE)
@@ -111,7 +111,7 @@ if (WIN32)
 	target_link_libraries(${PROJECT_NAME} dbghelp)
 endif()
 
-if(NOT GEODE_DONT_BUILD_TEST_MODS)
+if(NOT SAPPHIRE_DONT_BUILD_TEST_MODS)
 	if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 		add_subdirectory(test)
 	endif()

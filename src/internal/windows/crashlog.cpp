@@ -1,8 +1,8 @@
 #define WIN32_LEAN_AND_MEAN
 
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 
 #include "../crashlog.hpp"
 #include <Windows.h>
@@ -15,7 +15,7 @@
 #include <chrono>
 #include <DbgHelp.h>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 static bool g_lastLaunchCrashed = false;
 
@@ -211,7 +211,7 @@ static void printInfo(
         << info->ExceptionRecord->NumberParameters << "\n";
 }
 
-static void printGeodeInfo(std::ostream& stream) {
+static void printSapphireInfo(std::ostream& stream) {
     stream
         << "Loader Version: "
         << Loader::get()->getVersion().toString() << " "
@@ -236,7 +236,7 @@ static LONG WINAPI exceptionHandler(LPEXCEPTION_POINTERS info) {
     // make sure crashlog directory exists
     file_utils::createDirectoryAll(crashlog::getCrashLogDirectory());
 
-    // add a file to let Geode know on next launch that it crashed previously
+    // add a file to let Sapphire know on next launch that it crashed previously
     // this could also be done by saving a loader setting or smth but eh.
     file_utils::writeBinary(
         crashlog::getCrashLogDirectory() + "/last-crashed", {}
@@ -253,7 +253,7 @@ static LONG WINAPI exceptionHandler(LPEXCEPTION_POINTERS info) {
     file
         << getDateString(false) << "\n"
 	    << std::showbase
-	    << "Whoopsies! An exception has occurred while running Geode.\n";
+	    << "Whoopsies! An exception has occurred while running Sapphire.\n";
     
     if (faultyMod) {
         file
@@ -263,9 +263,9 @@ static LONG WINAPI exceptionHandler(LPEXCEPTION_POINTERS info) {
             << faultyMod->getDeveloper() << ") for assistance.\n";
     }
     
-    // geode info
-    file << "\n== Geode Information ==\n";
-    printGeodeInfo(file);
+    // sapphire info
+    file << "\n== Sapphire Information ==\n";
+    printSapphireInfo(file);
     
     // exception info
     file << "\n== Exception Information ==\n";
@@ -302,7 +302,7 @@ bool crashlog::didLastLaunchCrash() {
 
 std::string const& crashlog::getCrashLogDirectory() {
     static auto dir = (
-        Loader::get()->getGeodeDirectory() / "crashlogs"
+        Loader::get()->getSapphireDirectory() / "crashlogs"
     ).string();
     return dir;
 }

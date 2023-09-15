@@ -13,7 +13,7 @@
 #include <about.hpp>
 #include <utils/json_check.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 nlohmann::json& DataStore::operator[](std::string const& key) {
     return m_mod->m_dataStore[key];
@@ -94,7 +94,7 @@ Result<> Mod::createTempDir() {
         );
     }
 
-    auto tempDir = Loader::get()->getGeodeDirectory() / GEODE_TEMP_DIRECTORY;
+    auto tempDir = Loader::get()->getSapphireDirectory() / SAPPHIRE_TEMP_DIRECTORY;
     if (!ghc::filesystem::exists(tempDir)) {
         if (!ghc::filesystem::create_directory(tempDir)) {
             return Err<>("Unable to create temp directory for mods!");
@@ -286,7 +286,7 @@ Result<> Mod::uninstall() {
     }
     if (!ghc::filesystem::remove(m_info.m_path)) {
         return Err<>(
-            "Unable to delete mod's .geode file! "
+            "Unable to delete mod's .sapphire file! "
             "This might be due to insufficient permissions - "
             "try running GD as administrator."
         );
@@ -565,7 +565,7 @@ Result<ModInfo> ModInfo::createFromSchemaV010(
     json_assign_optional(knownKeys, json, "toggleable", info.m_supportsDisabling);
     json_assign_optional(knownKeys, json, "unloadable", info.m_supportsUnloading);
 
-    knownKeys.insert("geode");
+    knownKeys.insert("sapphire");
     knownKeys.insert("binary");
     knownKeys.insert("userdata");
     json_check_unknown(knownKeys, json, "");
@@ -586,26 +586,26 @@ Result<ModInfo> ModInfo::createFromSchemaV010(
             if (bo.contains("auto") && bo["auto"].is_boolean()) {
                 autoEnd = bo["auto"];
             }
-            #if defined(GEODE_IS_WINDOWS)
+            #if defined(SAPPHIRE_IS_WINDOWS)
             if (bo.contains("windows") && bo["windows"].is_string()) {
                 info.m_binaryName = bo["windows"];
             }
-            #elif defined(GEODE_IS_MACOS)
+            #elif defined(SAPPHIRE_IS_MACOS)
             if (bo.contains("macos") && bo["macos"].is_string()) {
                 info.m_binaryName = bo["macos"];
             }
-            #elif defined(GEODE_IS_ANDROID)
+            #elif defined(SAPPHIRE_IS_ANDROID)
             if (bo.contains("android") && bo["android"].is_string()) {
                 info.m_binaryName = bo["android"];
             }
-            #elif defined(GEODE_IS_IOS)
+            #elif defined(SAPPHIRE_IS_IOS)
             if (bo.contains("ios") && bo["ios"].is_string()) {
                 info.m_binaryName = bo["ios"];
             }
             #endif
         } else goto skip_binary_check;
-        if (autoEnd && !string_utils::endsWith(info.m_binaryName, GEODE_PLATFORM_EXTENSION)) {
-            info.m_binaryName += GEODE_PLATFORM_EXTENSION;
+        if (autoEnd && !string_utils::endsWith(info.m_binaryName, SAPPHIRE_PLATFORM_EXTENSION)) {
+            info.m_binaryName += SAPPHIRE_PLATFORM_EXTENSION;
         }
     }
     skip_binary_check:
@@ -616,8 +616,8 @@ Result<ModInfo> ModInfo::createFromSchemaV010(
 Result<ModInfo> ModInfo::create(nlohmann::json const& json) {
     // Check mod.json target version
     auto schema = LOADER_VERSION;
-    if (json.contains("geode") && json["geode"].is_string()) {
-        auto ver = json["geode"];
+    if (json.contains("sapphire") && json["sapphire"].is_string()) {
+        auto ver = json["sapphire"];
         if (VersionInfo::validate(ver)) {
             schema = VersionInfo(ver);
         } else {
@@ -635,7 +635,7 @@ Result<ModInfo> ModInfo::create(nlohmann::json const& json) {
     if (schema < Loader::s_supportedVersionMin) {
         return Err(
             "[mod.json] is built for an older version (" + 
-            schema.toString() + ") of Geode (current: " + 
+            schema.toString() + ") of Sapphire (current: " + 
             Loader::s_supportedVersionMin.toString() +
             "). Please update the mod to the latest version, "
             "and if the problem persists, contact the developer "
@@ -645,9 +645,9 @@ Result<ModInfo> ModInfo::create(nlohmann::json const& json) {
     if (schema > Loader::s_supportedVersionMax) {
         return Err(
             "[mod.json] is built for a newer version (" + 
-            schema.toString() + ") of Geode (current: " +
+            schema.toString() + ") of Sapphire (current: " +
             Loader::s_supportedVersionMax.toString() +
-            "). You need to update Geode in order to use "
+            "). You need to update Sapphire in order to use "
             "this mod."
         );
     }
@@ -661,9 +661,9 @@ Result<ModInfo> ModInfo::create(nlohmann::json const& json) {
         "[mod.json] targets a version (" +
         schema.toString() + ") that isn't "
         "supported by this version (v" + 
-        LOADER_VERSION_STR + ") of geode. "
+        LOADER_VERSION_STR + ") of sapphire. "
         "This is probably a bug; report it to "
-        "the Geode Development Team."
+        "the Sapphire Development Team."
     );
 }
 
@@ -681,7 +681,7 @@ Result<ModInfo> ModInfo::createFromFile(ghc::filesystem::path const& path) {
     }
 }
 
-Result<ModInfo> ModInfo::createFromGeodeFile(ghc::filesystem::path const& path) {
+Result<ModInfo> ModInfo::createFromSapphireFile(ghc::filesystem::path const& path) {
     ZipFile unzip(path.string());
     if (!unzip.isLoaded()) {
         return Err<>("\"" + path.string() + "\": Unable to unzip");

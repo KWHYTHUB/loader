@@ -1,9 +1,9 @@
 #include <utils/cocos.hpp>
-#include <utils/WackyGeodeMacros.hpp>
+#include <utils/WackySapphireMacros.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
-CCRect geode::cocos::calculateNodeCoverage(std::vector<CCNode*> const& nodes) {
+CCRect sapphire::cocos::calculateNodeCoverage(std::vector<CCNode*> const& nodes) {
     CCRect coverage;
     for (auto child : nodes) {
         auto pos = child->getPosition() - child->getScaledContentSize() * child->getAnchorPoint();
@@ -24,7 +24,7 @@ CCRect geode::cocos::calculateNodeCoverage(std::vector<CCNode*> const& nodes) {
     return coverage;
 }
 
-CCRect geode::cocos::calculateNodeCoverage(CCArray* nodes) {
+CCRect sapphire::cocos::calculateNodeCoverage(CCArray* nodes) {
     CCRect coverage;
     CCARRAY_FOREACH_B_TYPE(nodes, child, CCNode) {
         auto pos = child->getPosition() - child->getScaledContentSize() * child->getAnchorPoint();
@@ -45,11 +45,11 @@ CCRect geode::cocos::calculateNodeCoverage(CCArray* nodes) {
     return coverage;
 }
 
-CCRect geode::cocos::calculateChildCoverage(CCNode* parent) {
+CCRect sapphire::cocos::calculateChildCoverage(CCNode* parent) {
     return calculateNodeCoverage(parent->getChildren());
 }
 
-void geode::cocos::limitNodeSize(
+void sapphire::cocos::limitNodeSize(
     cocos2d::CCNode* spr,
     cocos2d::CCSize const& size,
     float def,
@@ -75,13 +75,13 @@ void geode::cocos::limitNodeSize(
     spr->setScale(scale);
 }
 
-bool geode::cocos::nodeIsVisible(cocos2d::CCNode* node) {
+bool sapphire::cocos::nodeIsVisible(cocos2d::CCNode* node) {
     if (!node->isVisible()) return false;
     if (node->getParent()) return nodeIsVisible(node->getParent());
     return true;
 }
 
-CCNode* geode::cocos::getChildByTagRecursive(cocos2d::CCNode* node, int tag) {
+CCNode* sapphire::cocos::getChildByTagRecursive(cocos2d::CCNode* node, int tag) {
     if (node->getTag() == tag) return node;
     auto children = node->getChildren();
     for (int i = 0; i < children->count(); ++i) {
@@ -94,7 +94,7 @@ CCNode* geode::cocos::getChildByTagRecursive(cocos2d::CCNode* node, int tag) {
 }
 
 
-bool geode::cocos::fileExistsInSearchPaths(const char* filename) {
+bool sapphire::cocos::fileExistsInSearchPaths(const char* filename) {
     auto utils = CCFileUtils::sharedFileUtils();
     return utils->isFileExist(utils->fullPathForFilename(filename, false));
 }

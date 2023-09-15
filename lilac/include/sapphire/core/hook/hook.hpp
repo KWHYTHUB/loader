@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_HOOK_HPP
-#define GEODE_CORE_HOOK_HPP
+#ifndef SAPPHIRE_CORE_HOOK_HPP
+#define SAPPHIRE_CORE_HOOK_HPP
 
 #include "../meta/preproc.hpp"
 
@@ -10,7 +10,7 @@ namespace lilac::hook {
      */
     using Handle = void*;
 
-    bool GEODE_CALL initialize();
+    bool SAPPHIRE_CALL initialize();
 
     /*
      * params:
@@ -25,7 +25,7 @@ namespace lilac::hook {
      * the hooked function should have the same calling convention and parameters
      * as the detour. otherwise, crashing is almost certain to occur.
      */
-    Handle GEODE_CALL add(const void* address, const void* detour);
+    Handle SAPPHIRE_CALL add(const void* address, const void* detour);
 
     /*
      * params:
@@ -35,7 +35,7 @@ namespace lilac::hook {
      * true if the hook was successfully removed.
      * false if removal failed.
      */
-    bool GEODE_CALL remove(Handle handle);
+    bool SAPPHIRE_CALL remove(Handle handle);
 
     /**
      * @param address Address to write to
@@ -44,7 +44,7 @@ namespace lilac::hook {
      * @returns True if succesfully written,
      * false if not
      */
-    bool GEODE_CALL write_memory(void* address, void* data, size_t size);
+    bool SAPPHIRE_CALL write_memory(void* address, void* data, size_t size);
 
     /**
      * @param address Address to read from
@@ -53,7 +53,7 @@ namespace lilac::hook {
      * @returns True if succesfully read,
      * false if not
      */
-    bool GEODE_CALL read_memory(void* address, void* receive, size_t size);
+    bool SAPPHIRE_CALL read_memory(void* address, void* receive, size_t size);
 }
 
-#endif /* GEODE_CORE_HOOK_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_HPP */

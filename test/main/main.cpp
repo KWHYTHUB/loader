@@ -1,24 +1,24 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 // Exported functions
-GEODE_API bool GEODE_CALL geode_enable() {
+SAPPHIRE_API bool SAPPHIRE_CALL sapphire_enable() {
 	Log::get() << "Enabled";
 	return true;
 }
 
-GEODE_API bool GEODE_CALL geode_disable() {
+SAPPHIRE_API bool SAPPHIRE_CALL sapphire_disable() {
 	Log::get() << "Disabled";
 	return true;
 }
 
-GEODE_API bool GEODE_CALL geode_load(Mod*) {
+SAPPHIRE_API bool SAPPHIRE_CALL sapphire_load(Mod*) {
 	Log::get() << "Loaded";
 	return true;
 }
 
-GEODE_API bool GEODE_CALL geode_unload() {
+SAPPHIRE_API bool SAPPHIRE_CALL sapphire_unload() {
 	Log::get() << "Unoaded";
 	return true;
 }

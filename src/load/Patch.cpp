@@ -6,9 +6,9 @@
 #include <utils/vector.hpp>
 #include <InternalLoader.hpp>
 
-#include <lilac/include/geode/core/hook/hook.hpp>
+#include <lilac/include/sapphire/core/hook/hook.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 byte_array readMemory(void* address, size_t amount) {
     byte_array ret;

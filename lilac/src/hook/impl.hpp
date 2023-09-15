@@ -1,15 +1,15 @@
-#ifndef GEODE_CORE_HOOK_IMPL_HPP
-#define GEODE_CORE_HOOK_IMPL_HPP
+#ifndef SAPPHIRE_CORE_HOOK_IMPL_HPP
+#define SAPPHIRE_CORE_HOOK_IMPL_HPP
 
 #include <hook.hpp>
 #include <unordered_map>
 #include <vector>
 
-#if defined(GEODE_IS_WINDOWS)
+#if defined(SAPPHIRE_IS_WINDOWS)
     #include "windows.hpp"
-#elif defined(GEODE_IS_IOS)
+#elif defined(SAPPHIRE_IS_IOS)
     #include "ios.hpp"
-#elif defined(GEODE_IS_MACOS)
+#elif defined(SAPPHIRE_IS_MACOS)
     #include "macos.hpp"
 #endif
 
@@ -62,9 +62,9 @@ namespace lilac::hook {
         // returns true if handled, false if not.
         static bool handler(Exception& info);
 
-        static hook::Handle GEODE_CALL add_hook(const void* address, const void* detour);
-        static bool GEODE_CALL remove_hook(hook::Handle handle);
+        static hook::Handle SAPPHIRE_CALL add_hook(const void* address, const void* detour);
+        static bool SAPPHIRE_CALL remove_hook(hook::Handle handle);
     };
 }
 
-#endif /* GEODE_CORE_HOOK_IMPL_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_IMPL_HPP */

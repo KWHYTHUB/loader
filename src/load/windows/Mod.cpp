@@ -1,9 +1,9 @@
 #include <utils/platform.hpp>
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 
-#include <Geode.hpp>
-USE_GEODE_NAMESPACE();
+#include <Sapphire.hpp>
+USE_SAPPHIRE_NAMESPACE();
 
 template<typename T>
 T findSymbolOrMangled(HMODULE load, const char* name, const char* mangled) {
@@ -78,14 +78,14 @@ std::string getLastWinError() {
 Result<> Mod::loadPlatformBinary() {
     auto load = LoadLibraryW((this->m_tempDirName / this->m_info.m_binaryName).wstring().c_str());
     if (load) {
-        this->m_implicitLoadFunc = findSymbolOrMangled<geode_load>(load, "geode_implicit_load", "_geode_implicit_load@4");
-        this->m_loadFunc = findSymbolOrMangled<geode_load>(load, "geode_load", "_geode_load@4");
-        this->m_unloadFunc = findSymbolOrMangled<geode_unload>(load, "geode_unload", "_geode_unload@0");
-        this->m_enableFunc = findSymbolOrMangled<geode_enable>(load, "geode_enable", "_geode_enable@0");
-        this->m_disableFunc = findSymbolOrMangled<geode_disable>(load, "geode_disable", "_geode_disable@0");
-        this->m_saveDataFunc = findSymbolOrMangled<geode_save_data>(load, "geode_save_data", "_geode_save_data@4");
-        this->m_loadDataFunc = findSymbolOrMangled<geode_load_data>(load, "geode_load_data", "_geode_load_data@4");
-        this->m_settingUpdatedFunc = findSymbolOrMangled<geode_setting_updated>(load, "geode_setting_updated", "_geode_setting_updated@8");
+        this->m_implicitLoadFunc = findSymbolOrMangled<sapphire_load>(load, "sapphire_implicit_load", "_sapphire_implicit_load@4");
+        this->m_loadFunc = findSymbolOrMangled<sapphire_load>(load, "sapphire_load", "_sapphire_load@4");
+        this->m_unloadFunc = findSymbolOrMangled<sapphire_unload>(load, "sapphire_unload", "_sapphire_unload@0");
+        this->m_enableFunc = findSymbolOrMangled<sapphire_enable>(load, "sapphire_enable", "_sapphire_enable@0");
+        this->m_disableFunc = findSymbolOrMangled<sapphire_disable>(load, "sapphire_disable", "_sapphire_disable@0");
+        this->m_saveDataFunc = findSymbolOrMangled<sapphire_save_data>(load, "sapphire_save_data", "_sapphire_save_data@4");
+        this->m_loadDataFunc = findSymbolOrMangled<sapphire_load_data>(load, "sapphire_load_data", "_sapphire_load_data@4");
+        this->m_settingUpdatedFunc = findSymbolOrMangled<sapphire_setting_updated>(load, "sapphire_setting_updated", "_sapphire_setting_updated@8");
 
         if (!this->m_implicitLoadFunc && !this->m_loadFunc) {
             return Err<>("Unable to find mod entry point (lacking both implicit & explicit definition)");

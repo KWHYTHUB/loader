@@ -1,8 +1,8 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
-GEODE_API bool GEODE_CALL geode_load(Mod*) {
+SAPPHIRE_API bool SAPPHIRE_CALL sapphire_load(Mod*) {
 	// Dispatcher::get()->addFunction<void(GJGarageLayer*)>("test-garage-open", [](GJGarageLayer* gl) {
 	// 	auto label = CCLabelBMFont::create("Dispatcher works!", "bigFont.fnt");
 	// 	label->setPosition(100, 80);

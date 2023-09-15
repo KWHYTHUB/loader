@@ -1,8 +1,8 @@
 #include <utils/platform.hpp>
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 #include <iostream>
 #include <sstream>
@@ -21,7 +21,7 @@ std::string utils::clipboard::read() {
 	return std::string(clipboard);
 }
 
-ghc::filesystem::path utils::dirs::geodeRoot() {
+ghc::filesystem::path utils::dirs::sapphireRoot() {
 	char cwd[PATH_MAX];
 	getcwd(cwd, sizeof(cwd));
 	// utils::clipboard::write(cwd);

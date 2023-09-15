@@ -1,6 +1,6 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 class $modify(GameManager) {
 	void reloadAllStep2() {

@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_DEFAULTCONV_HPP
-#define GEODE_CORE_META_DEFAULTCONV_HPP
+#ifndef SAPPHIRE_CORE_META_DEFAULTCONV_HPP
+#define SAPPHIRE_CORE_META_DEFAULTCONV_HPP
 
 namespace lilac::meta {
     template <class Ret, class... Args>
@@ -17,4 +17,4 @@ namespace lilac::meta {
     };
 }
 
-#endif /* GEODE_CORE_META_DEFAULTCONV_HPP */
+#endif /* SAPPHIRE_CORE_META_DEFAULTCONV_HPP */

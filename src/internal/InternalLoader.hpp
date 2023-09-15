@@ -8,7 +8,7 @@
 #include "FileWatcher.hpp"
 #include <mutex>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 /**
  * Internal extension of Loader for private information
@@ -30,7 +30,7 @@ public:
 
 	bool loadHooks();
 
-	void queueInGDThread(std::function<void GEODE_CALL(void)> func);
+	void queueInGDThread(std::function<void SAPPHIRE_CALL(void)> func);
 	void executeGDThreadQueue();
 
 	bool platformConsoleReady() const;
@@ -40,5 +40,5 @@ public:
 	void closePlatformConsole();
 	static void platformMessageBox(const char* title, const char* info);
 
-	friend int geodeEntry(void* platformData);
+	friend int sapphireEntry(void* platformData);
 };

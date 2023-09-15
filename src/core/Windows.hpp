@@ -3,7 +3,7 @@
 #include <vector>
 #include "Platform.hpp"
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
     class Windows : public Platform<Windows> {
     public:
     #if defined(NDEBUG)

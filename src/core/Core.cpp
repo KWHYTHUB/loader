@@ -1,15 +1,15 @@
 #include "Core.hpp"
 #include <map>
 
-#ifndef GEODE_IS_WINDOWS
+#ifndef SAPPHIRE_IS_WINDOWS
 
-#if defined(GEODE_IS_MACOS)
+#if defined(SAPPHIRE_IS_MACOS)
     #include "MacOS.hpp"
-#elif defined(GEODE_IS_IOS)
+#elif defined(SAPPHIRE_IS_IOS)
     // #include "iOS.hpp"
 #endif
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
 	namespace {
 		auto& originalBytes() {
 			static std::map<void*, std::vector<std::byte>*> ret;
@@ -141,15 +141,15 @@ namespace geode::core::impl {
 	}
 }
 
-bool geode::core::hook::initialize() {
-	return geode::core::impl::TargetPlatform::initialize();
+bool sapphire::core::hook::initialize() {
+	return sapphire::core::impl::TargetPlatform::initialize();
 }
 
 #else
 
 #include <dobby.h>
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
 	namespace {
 		auto& trampolines() {
 			static std::map<void*, void*> ret;
@@ -167,7 +167,7 @@ namespace geode::core::impl {
 	}
 }
 
-bool geode::core::hook::initialize() {
+bool sapphire::core::hook::initialize() {
 	return true;
 }
 

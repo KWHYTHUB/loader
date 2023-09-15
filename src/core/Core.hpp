@@ -4,7 +4,7 @@
 /*
 	Internal use functions
 */
-namespace geode::core {
+namespace sapphire::core {
 	namespace impl {
 		void* generateRawTrampoline(void* address);
 

@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_X86_HPP
-#define GEODE_CORE_META_X86_HPP
+#ifndef SAPPHIRE_CORE_META_X86_HPP
+#define SAPPHIRE_CORE_META_X86_HPP
 
 #include "common.hpp"
 
@@ -66,7 +66,7 @@ namespace lilac::meta::x86 {
         explicit operator To() {
             static_assert(
                 sizeof(From) >= sizeof(To),
-                "Please report a bug to the Geode developers! This should never be reached.\n"
+                "Please report a bug to the Sapphire developers! This should never be reached.\n"
                 "Size of Register is smaller than the size of the destination type!"
             );
 
@@ -112,4 +112,4 @@ namespace lilac::meta::x86 {
 #endif
 }
 
-#endif /* GEODE_CORE_META_X86_HPP */
+#endif /* SAPPHIRE_CORE_META_X86_HPP */

@@ -1,4 +1,4 @@
-#define GEODE_CORE_HANDLER_HPP
+#define SAPPHIRE_CORE_HANDLER_HPP
 
 #include "../meta/meta.hpp"
 

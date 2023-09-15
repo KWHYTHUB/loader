@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_HOOK_MACOS_HPP
-#define GEODE_CORE_HOOK_MACOS_HPP
+#ifndef SAPPHIRE_CORE_HOOK_MACOS_HPP
+#define SAPPHIRE_CORE_HOOK_MACOS_HPP
 
 #include "platform.hpp"
 
@@ -16,4 +16,4 @@ namespace lilac::hook {
     using TargetPlatform = Platform<MacOSX>;
 }
 
-#endif /* GEODE_CORE_HOOK_MACOS_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_MACOS_HPP */

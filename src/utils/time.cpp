@@ -1,15 +1,15 @@
 #include <utils/general.hpp>
 
-#ifdef GEODE_IS_WINDOWS
-#define GEODE_CTIME() ctime_s(buf, sizeof buf, &t);
+#ifdef SAPPHIRE_IS_WINDOWS
+#define SAPPHIRE_CTIME() ctime_s(buf, sizeof buf, &t);
 #else
-#define GEODE_CTIME() strcpy(buf, ctime(&t));
+#define SAPPHIRE_CTIME() strcpy(buf, ctime(&t));
 #endif
 
-std::string geode::utils::timePointAsString(const std::chrono::system_clock::time_point& tp) {
+std::string sapphire::utils::timePointAsString(const std::chrono::system_clock::time_point& tp) {
     auto t = std::chrono::system_clock::to_time_t(tp);
     char buf[128];
-    GEODE_CTIME();
+    SAPPHIRE_CTIME();
     std::string res = buf;
     res.pop_back();
     return res;

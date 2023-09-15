@@ -1,16 +1,16 @@
-# Geode SDK
+# Sapphire SDK
  
-This mod is the internal representation of **Geode SDK**. You can customize Geode's settings through this mod.
+This mod is the internal representation of **Sapphire SDK**. You can customize Sapphire's settings through this mod.
 
 ## About
 
-**Geode** is a [Geometry Dash](https://store.steampowered.com/app/322170/Geometry_Dash/) mod loader and modding SDK with a modern approach towards mod development. Unlike previous mod loaders, which merely inject the DLLs and let devs handle the rest, Geode aims to be a more comprehensive project, which manages loaded mods & hooks itself. Geode has been built to ensure compatibility, portability and ease of use while retaining performance. For devs, Geode means easy development and portability; for end users, Geode means an uniform and easy experience using mods.
+**Sapphire** is a [Geometry Dash](https://store.steampowered.com/app/322170/Geometry_Dash/) mod loader and modding SDK with a modern approach towards mod development. Unlike previous mod loaders, which merely inject the DLLs and let devs handle the rest, Sapphire aims to be a more comprehensive project, which manages loaded mods & hooks itself. Sapphire has been built to ensure compatibility, portability and ease of use while retaining performance. For devs, Sapphire means easy development and portability; for end users, Sapphire means an uniform and easy experience using mods.
 
 ## Help, Contributing, Etc.
 
-If you need help using Geode or would like to contribute, feel free to join our [Discord Server](https://discord.gg/9e43WMKzhp).
+If you need help using Sapphire or would like to contribute, feel free to join our [Discord Server](https://discord.gg/9e43WMKzhp).
 
-See [Documentation](https://geode-sdk.github.io/docs) for info about developing mods for Geode.
+See [Documentation](https://KWHYTHUB.github.io/docs) for info about developing mods for Sapphire.
 
 ## Credits
 

@@ -13,16 +13,16 @@ jobs:
     steps:      
     - uses: actions/checkout@v2
       with:
-        repository: geode-sdk/suite
+        repository: KWHYTHUB/suite
         path: suite
         ref: nightly
         submodules: recursive
-        token: '${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}'
+        token: '${{ secrets.SAPPHIRE_BOT_PUSH_BIN_TOKEN }}'
 
     - name: Download Windows artifact
       uses: dawidd6/action-download-artifact@v2
       with:
-        github_token: ${{secrets.GEODE_BOT_PUSH_BIN_TOKEN}}
+        github_token: ${{secrets.SAPPHIRE_BOT_PUSH_BIN_TOKEN}}
         workflow: build.yml
         workflow_conclusion: success
         name: Windows Binary
@@ -31,7 +31,7 @@ jobs:
     - name: Download MacOS artifact
       uses: dawidd6/action-download-artifact@v2
       with:
-        github_token: ${{secrets.GEODE_BOT_PUSH_BIN_TOKEN}}
+        github_token: ${{secrets.SAPPHIRE_BOT_PUSH_BIN_TOKEN}}
         workflow: build.yml
         workflow_conclusion: success
         name: macOS Binary
@@ -47,8 +47,8 @@ jobs:
     - name: Commit and push to suite
       working-directory: ${{ github.workspace }}/suite
       run: |
-        git config --local user.email "${{ secrets.GEODE_BOT_EMAIL }}"
-        git config --local user.name "GeodeBot"
+        git config --local user.email "${{ secrets.SAPPHIRE_BOT_EMAIL }}"
+        git config --local user.name "SapphireBot"
         git add -A
         git commit -m "Loader update from ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
-        git push "https://GeodeBot:${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN}}@github.com/geode-sdk/suite.git"
+        git push "https://SapphireBot:${{ secrets.SAPPHIRE_BOT_PUSH_BIN_TOKEN}}@github.com/KWHYTHUB/suite.git"

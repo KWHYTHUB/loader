@@ -6,24 +6,24 @@
 #include "InternalMod.hpp"
 #include <loader/Log.hpp>
 #include <loader/Loader.hpp>
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 #include <thread>
 
 InternalLoader::InternalLoader() : Loader() {
-    #ifdef GEODE_PLATFORM_CONSOLE
+    #ifdef SAPPHIRE_PLATFORM_CONSOLE
     this->setupPlatformConsole();
     #endif
 }
 
 InternalLoader::~InternalLoader() {
-    #ifdef GEODE_PLATFORM_CONSOLE
+    #ifdef SAPPHIRE_PLATFORM_CONSOLE
     this->closePlatformConsole();
     #endif
 }
 
 InternalLoader* InternalLoader::get() {
-    static auto g_geode = new InternalLoader;
-    return g_geode;
+    static auto g_sapphire = new InternalLoader;
+    return g_sapphire;
 }
 
 bool InternalLoader::setup() {
@@ -45,7 +45,7 @@ bool InternalLoader::setup() {
     return true;
 }
 
-void InternalLoader::queueInGDThread(std::function<void GEODE_CALL()> func) {
+void InternalLoader::queueInGDThread(std::function<void SAPPHIRE_CALL()> func) {
     std::lock_guard<std::mutex> lock(m_gdThreadMutex);
     this->m_gdThreadQueue.push_back(func);
 }
@@ -70,7 +70,7 @@ bool InternalLoader::platformConsoleReady() const {
     return m_platformConsoleReady;
 }
 
-#if defined(GEODE_IS_WINDOWS)
+#if defined(SAPPHIRE_IS_WINDOWS)
 void InternalLoader::platformMessageBox(const char* title, const char* info) {
     MessageBoxA(nullptr, title, info, MB_OK);
 }
@@ -113,7 +113,7 @@ void InternalLoader::closePlatformConsole() {
     FreeConsole();
 }
 
-#elif defined(GEODE_IS_MACOS)
+#elif defined(SAPPHIRE_IS_MACOS)
 #include <iostream>
 
 void InternalLoader::platformMessageBox(const char* title, const char* info) {
@@ -131,7 +131,7 @@ void InternalLoader::awaitPlatformConsole() {
 void InternalLoader::closePlatformConsole() {
 }
 
-#elif defined(GEODE_IS_IOS)
+#elif defined(SAPPHIRE_IS_IOS)
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -143,7 +143,7 @@ void InternalLoader::platformMessageBox(const char* title, const char* info) {
 
 void InternalLoader::setupPlatformConsole() {
     ghc::filesystem::path(getpwuid(getuid())->pw_dir);
-    freopen(ghc::filesystem::path(utils::dirs::geodeRoot() / "geode_log.txt").string().c_str(),"w",stdout);
+    freopen(ghc::filesystem::path(utils::dirs::sapphireRoot() / "sapphire_log.txt").string().c_str(),"w",stdout);
     InternalLoader::
     m_platformConsoleReady = true;
 }

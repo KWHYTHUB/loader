@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_CALLCONV_HPP
-#define GEODE_CORE_META_CALLCONV_HPP
+#ifndef SAPPHIRE_CORE_META_CALLCONV_HPP
+#define SAPPHIRE_CORE_META_CALLCONV_HPP
 
 #include "tuple.hpp"
 
@@ -41,4 +41,4 @@ namespace lilac::meta {
     };
 }
 
-#endif /* GEODE_CORE_META_CALLCONV_HPP */
+#endif /* SAPPHIRE_CORE_META_CALLCONV_HPP */

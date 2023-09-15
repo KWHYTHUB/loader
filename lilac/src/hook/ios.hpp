@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_HOOK_IOS_HPP
-#define GEODE_CORE_HOOK_IOS_HPP
+#ifndef SAPPHIRE_CORE_HOOK_IOS_HPP
+#define SAPPHIRE_CORE_HOOK_IOS_HPP
 
 #include "platform.hpp"
 
@@ -17,4 +17,4 @@ namespace lilac::hook {
     using TargetPlatform = Platform<iOS>;
 }
 
-#endif /* GEODE_CORE_HOOK_IOS_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_IOS_HPP */

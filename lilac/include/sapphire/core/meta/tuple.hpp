@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_TUPLE_HPP
-#define GEODE_CORE_META_TUPLE_HPP
+#ifndef SAPPHIRE_CORE_META_TUPLE_HPP
+#define SAPPHIRE_CORE_META_TUPLE_HPP
 
 #include "common.hpp"
 
@@ -95,4 +95,4 @@ namespace lilac::meta {
     Tuple(Classes...) -> Tuple<Classes...>;
 }
 
-#endif /* GEODE_CORE_META_TUPLE_HPP */
+#endif /* SAPPHIRE_CORE_META_TUPLE_HPP */

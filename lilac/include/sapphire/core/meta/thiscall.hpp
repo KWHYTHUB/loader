@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_THISCALL_HPP
-#define GEODE_CORE_META_THISCALL_HPP
+#ifndef SAPPHIRE_CORE_META_THISCALL_HPP
+#define SAPPHIRE_CORE_META_THISCALL_HPP
 
 namespace lilac::meta::x86 {
     template <class Ret, class... Args>
@@ -23,4 +23,4 @@ namespace lilac::meta::x86 {
     };
 }
 
-#endif /* GEODE_CORE_META_THISCALL_HPP */
+#endif /* SAPPHIRE_CORE_META_THISCALL_HPP */

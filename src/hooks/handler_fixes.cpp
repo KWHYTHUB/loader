@@ -1,13 +1,13 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
 // this is the fix for the dynamic_cast problems
 
 using namespace cocos2d;
-using namespace geode::modifier;
+using namespace sapphire::modifier;
 
-#if defined(GEODE_IS_IOS) || defined(GEODE_IS_MACOS)
-namespace geode::fixes {
-	using namespace geode::cast;
+#if defined(SAPPHIRE_IS_IOS) || defined(SAPPHIRE_IS_MACOS)
+namespace sapphire::fixes {
+	using namespace sapphire::cast;
 
 #define HandlerFixFor(CCUtility)                                                                        \
 class $modify(CCUtility##HandlerTypeinfoFix, CCUtility##Handler) {                                      \
@@ -139,6 +139,6 @@ class $modify(CCStandardTouchHandlerTypeinfoFix, CCStandardTouchHandler) {
 	}
 };
 
-} // geode::fixes
+} // sapphire::fixes
 
 #endif

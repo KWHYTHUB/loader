@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_FUNCTION_HPP
-#define GEODE_CORE_META_FUNCTION_HPP
+#ifndef SAPPHIRE_CORE_META_FUNCTION_HPP
+#define SAPPHIRE_CORE_META_FUNCTION_HPP
 
 #include "callconv.hpp"
 #include "common.hpp"
@@ -8,7 +8,7 @@
 #include <type_traits>
 
 namespace lilac::meta {
-    /* The Geode Function class wraps functions with unconventional
+    /* The Sapphire Function class wraps functions with unconventional
      *  calling conventions (how ironic).
      */
     template <class Func, template <class, class...> class Conv>
@@ -34,4 +34,4 @@ namespace lilac::meta {
     };
 }
 
-#endif /* GEODE_CORE_META_FUNCTION_HPP */
+#endif /* SAPPHIRE_CORE_META_FUNCTION_HPP */

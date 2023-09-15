@@ -1,12 +1,12 @@
 #include "Windows.hpp"
 #include "Core.hpp"
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 
 #include <Windows.h>
 
-using namespace geode::core::hook;
-using namespace geode::core::impl;
+using namespace sapphire::core::hook;
+using namespace sapphire::core::impl;
 
 namespace {
     LONG WINAPI signalHandler(EXCEPTION_POINTERS* info) {

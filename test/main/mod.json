@@ -1,17 +1,17 @@
 {
-    "geode":        "v0.1.0",
+    "sapphire":        "v0.1.0",
 	"version":      "v1.0.0",
-	"id":           "geode.test",
-    "name":         "Geode Test",
-    "developer":    "Geode Team",
-    "description":  "unit test for geode",
+	"id":           "sapphire.test",
+    "name":         "Sapphire Test",
+    "developer":    "Sapphire Team",
+    "description":  "unit test for sapphire",
     "binary":       "TestMod",
     "datastore": {
         "times-opened": 1
     },
     "dependencies": [
         {
-            "id": "geode.testdep",
+            "id": "sapphire.testdep",
             "version": "v1.0.*",
             "required": true
         }

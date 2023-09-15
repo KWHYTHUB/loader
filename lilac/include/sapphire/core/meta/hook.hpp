@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_HOOK_HPP
-#define GEODE_CORE_META_HOOK_HPP
+#ifndef SAPPHIRE_CORE_META_HOOK_HPP
+#define SAPPHIRE_CORE_META_HOOK_HPP
 
 #include "../hook/hook.hpp"
 #include "callconv.hpp"
@@ -47,4 +47,4 @@ namespace lilac::meta {
     };
 }
 
-#endif /* GEODE_CORE_META_HOOK_HPP */
+#endif /* SAPPHIRE_CORE_META_HOOK_HPP */

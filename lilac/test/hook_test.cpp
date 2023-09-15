@@ -1,9 +1,9 @@
-#include <geode/core/hook/hook.hpp>
+#include <sapphire/core/hook/hook.hpp>
 
-#if defined(GEODE_IS_WINDOWS)
+#if defined(SAPPHIRE_IS_WINDOWS)
     #include <Windows.h>
     #define NOINLINE __declspec(noinline)
-#elif defined(GEODE_IS_MACOS)
+#elif defined(SAPPHIRE_IS_MACOS)
     #define NOINLINE __attribute__((noinline))
 #endif
 

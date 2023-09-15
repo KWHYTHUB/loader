@@ -1,11 +1,11 @@
 #include <utils/platform.hpp>
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 #include <dlfcn.h>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 template<typename T>
 T findSymbolOrMangled(void* dylib, const char* name, const char* mangled) {
@@ -19,14 +19,14 @@ T findSymbolOrMangled(void* dylib, const char* name, const char* mangled) {
 Result<> Mod::loadPlatformBinary() {
 	auto dylib = dlopen((this->m_tempDirName / this->m_info.m_binaryName).string().c_str(), RTLD_LAZY);
 	if (dylib) {
-		this->m_implicitLoadFunc = findSymbolOrMangled<geode_load>(dylib, "geode_implicit_load", "_geode_implicit_load");
-		this->m_loadFunc = findSymbolOrMangled<geode_load>(dylib, "geode_load", "_geode_load");
-		this->m_unloadFunc = findSymbolOrMangled<geode_unload>(dylib, "geode_unload", "_geode_unload");
-		this->m_enableFunc = findSymbolOrMangled<geode_enable>(dylib, "geode_enable", "_geode_enable");
-		this->m_disableFunc = findSymbolOrMangled<geode_disable>(dylib, "geode_disable", "_geode_disable");
-		this->m_saveDataFunc = findSymbolOrMangled<geode_save_data>(dylib, "geode_save_data", "_geode_save_data");
-		this->m_loadDataFunc = findSymbolOrMangled<geode_load_data>(dylib, "geode_load_data", "_geode_load_data");
-		this->m_settingUpdatedFunc = findSymbolOrMangled<geode_setting_updated>(dylib, "geode_setting_updated", "_geode_setting_updated");
+		this->m_implicitLoadFunc = findSymbolOrMangled<sapphire_load>(dylib, "sapphire_implicit_load", "_sapphire_implicit_load");
+		this->m_loadFunc = findSymbolOrMangled<sapphire_load>(dylib, "sapphire_load", "_sapphire_load");
+		this->m_unloadFunc = findSymbolOrMangled<sapphire_unload>(dylib, "sapphire_unload", "_sapphire_unload");
+		this->m_enableFunc = findSymbolOrMangled<sapphire_enable>(dylib, "sapphire_enable", "_sapphire_enable");
+		this->m_disableFunc = findSymbolOrMangled<sapphire_disable>(dylib, "sapphire_disable", "_sapphire_disable");
+		this->m_saveDataFunc = findSymbolOrMangled<sapphire_save_data>(dylib, "sapphire_save_data", "_sapphire_save_data");
+		this->m_loadDataFunc = findSymbolOrMangled<sapphire_load_data>(dylib, "sapphire_load_data", "_sapphire_load_data");
+		this->m_settingUpdatedFunc = findSymbolOrMangled<sapphire_setting_updated>(dylib, "sapphire_setting_updated", "_sapphire_setting_updated");
 
 		if (!this->m_implicitLoadFunc && !this->m_loadFunc) {
 			return Err<>("Unable to find mod entry point (lacking both implicit & explicit definition)");

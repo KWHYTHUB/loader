@@ -1,7 +1,7 @@
 #include <FileWatcher.hpp>
 #include <utils/platform.hpp>
 
-#ifdef GEODE_IS_IOS
+#ifdef SAPPHIRE_IS_IOS
 
 #import <UIKit/UIKit.h>
 #include <fcntl.h>

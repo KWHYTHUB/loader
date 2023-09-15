@@ -15,14 +15,14 @@ BEGIN
     BEGIN
         BLOCK "080904b0"
         BEGIN
-            VALUE "Comments", "Geode Mod Loader"
-            VALUE "CompanyName", "Geode Development Team"
-            VALUE "FileDescription", "Geode mod loader."
+            VALUE "Comments", "Sapphire Mod Loader"
+            VALUE "CompanyName", "Sapphire Development Team"
+            VALUE "FileDescription", "Sapphire mod loader."
             VALUE "FileVersion", "@PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0"
             VALUE "InternalName", "@PROJECT_NAME@"
-            VALUE "LegalCopyright", "2022 The Geode Team"
+            VALUE "LegalCopyright", "2022 The Sapphire Team"
             VALUE "OriginalFilename", "@PROJECT_NAME@.dll"
-            VALUE "ProductName", "Geode Loader"
+            VALUE "ProductName", "Sapphire Loader"
             VALUE "ProductVersion", "@PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0"
         END
     END

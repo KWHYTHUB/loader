@@ -3,7 +3,7 @@
 
 #include <hook-core/Hook.hpp>
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
 	namespace {
 		inline auto& generatedTrampolines() {
 			static std::unordered_map<void*, void*> ret;
@@ -35,7 +35,7 @@ namespace geode::core::impl {
 		void* generatedTrampoline
 		) {
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 		if (mappedHandlers().find(address) == mappedHandlers().end()) {
 	        // std::cout << "allocate handler vector for " << address << std::endl;
 	        mappedHandlers().insert({address, new std::vector<void*>});
@@ -55,7 +55,7 @@ namespace geode::core::impl {
 	    mappedTrampolines()[address]->push_back(generatedTrampoline); 
 	    *originalTrampolineAddress = puretramp;
 
-#ifndef GEODE_IS_WINDOWS
+#ifndef SAPPHIRE_IS_WINDOWS
 	    if (mappedHandlers().find(address) == mappedHandlers().end()) {
 	        // std::cout << "allocate handler vector for " << address << std::endl;
 	        mappedHandlers().insert({address, new std::vector<void*>});

@@ -1,4 +1,4 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 #include <loader/Log.hpp>
 #include <loader/Mod.hpp>
 #include <loader/Loader.hpp>
@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& os, cocos2d::ccColor4B const& color) {
     return os;
 }
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 
 log_clock::time_point LogPtr::getTime() const {
@@ -117,9 +117,9 @@ std::vector<LogMetadata*> const& LogPtr::getData() const {
     return m_data;
 }
 
-std::string geode::generateLogName() {
+std::string sapphire::generateLogName() {
     std::stringstream tmp;
-    tmp << "Geode_" 
+    tmp << "Sapphire_" 
         << std::chrono::duration_cast<std::chrono::seconds>(log_clock::now().time_since_epoch()).count()
         << ".log";
     return tmp.str();
@@ -136,7 +136,7 @@ void Log::flush() {
 
 Log::~Log() {
     this->flush();
-    #ifdef GEODE_PLATFORM_CONSOLE
+    #ifdef SAPPHIRE_PLATFORM_CONSOLE
     std::cout << std::endl;
     #endif
 }

@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_META_MEMBERCALL_HPP
-#define GEODE_CORE_META_MEMBERCALL_HPP
+#ifndef SAPPHIRE_CORE_META_MEMBERCALL_HPP
+#define SAPPHIRE_CORE_META_MEMBERCALL_HPP
 
 #include "callconv.hpp"
 #include "tuple.hpp"
@@ -137,7 +137,7 @@ namespace lilac::meta::x86 {
         class Impl {
             static_assert(
                 always_false<Class>,
-                "Please report a bug to the Geode developers! This should never be reached.\n"
+                "Please report a bug to the Sapphire developers! This should never be reached.\n"
                 "SFINAE didn't reach the right overload!"
             );
         };
@@ -185,4 +185,4 @@ namespace lilac::meta::x86 {
     };
 }
 
-#endif /* GEODE_CORE_META_MEMBERCALL_HPP */
+#endif /* SAPPHIRE_CORE_META_MEMBERCALL_HPP */

@@ -3,7 +3,7 @@
 #include <vector>
 #include "Platform.hpp"
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
     class MacOSX : public Platform<MacOSX> {
     public:
     	static inline auto trap = { std::byte(0x0f), std::byte(0x0b) };

@@ -6,9 +6,9 @@
 #include <utils/ext.hpp>
 #include <utils/general.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 #define THE_SSCANF sscanf_s
 #else
 #define THE_SSCANF sscanf

@@ -1,5 +1,5 @@
-#ifndef GEODE_CORE_HOOK_WINDOWS_HPP
-#define GEODE_CORE_HOOK_WINDOWS_HPP
+#ifndef SAPPHIRE_CORE_HOOK_WINDOWS_HPP
+#define SAPPHIRE_CORE_HOOK_WINDOWS_HPP
 
 #include "platform.hpp"
 
@@ -22,4 +22,4 @@ namespace lilac::hook {
     using TargetPlatform = Platform<WindowsX86>;
 }
 
-#endif /* GEODE_CORE_HOOK_WINDOWS_HPP */
+#endif /* SAPPHIRE_CORE_HOOK_WINDOWS_HPP */

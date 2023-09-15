@@ -1,7 +1,7 @@
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 #include <InternalLoader.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 class $modify(CCScheduler) {
     void update(float dt) {

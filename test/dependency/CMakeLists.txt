@@ -14,7 +14,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
 
 target_link_libraries(
     ${PROJECT_NAME}
-    GeodeLoader
+    SapphireLoader
 )
 
-setup_geode_mod(NO_LOADER BUILD_CODEGEN)
+setup_sapphire_mod(NO_LOADER BUILD_CODEGEN)

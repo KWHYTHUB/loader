@@ -2,7 +2,7 @@
 #include <vector>
 #include <platform/platform.hpp>
 
-namespace geode::core::impl {
+namespace sapphire::core::impl {
 	template <typename T>
 	class Platform {
 	public:

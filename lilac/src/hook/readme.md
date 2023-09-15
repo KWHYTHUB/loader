@@ -3,14 +3,14 @@
 ### Abstract
 
 Currently, the hooking mechanisms used by most mod developers is ugly, inconsistent, error-prone, and incompatible.
-The Geode hooking library shall be created in a way that makes it very hard for developers to make common mistakes
+The Sapphire hooking library shall be created in a way that makes it very hard for developers to make common mistakes
 and look similar to actual C++ source code, rather than using C function pointers and ugly syntax.
 The API should be concise, without requiring extra steps in order to enable a hook after creating it.
 In addition, it should allow for easy interoperability between in-game modifications without hook conflicts.
 
 ### Design
 
-The Geode hooking library shall be implemented using trap instructions and subroutine concepts: "trap hooking".
+The Sapphire hooking library shall be implemented using trap instructions and subroutine concepts: "trap hooking".
 The advantage of this approach is that:
 - Trap exceptions and subroutining are available on all major CPU architectures, as they are useful for 
 debugging and writing maintainable code.
@@ -20,12 +20,12 @@ debugging and writing maintainable code.
 - Trap hooking is much better for multihook management, compared to inline hooking.
 - Trap hooking does not require a "function gateway".
 
-The Geode hooking library can also be used for easy midfunction hooks, though this is not the main goal at this time.
+The Sapphire hooking library can also be used for easy midfunction hooks, though this is not the main goal at this time.
 (Midfunction hooks break cross-platform concept)
 
 ### Implementation
 
-The Geode hooking library shall use this structure (or something similar) for its hook manager:
+The Sapphire hooking library shall use this structure (or something similar) for its hook manager:
 ```cpp
 class HookManager {
 private:

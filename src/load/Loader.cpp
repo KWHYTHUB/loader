@@ -10,11 +10,11 @@
 #include <utils/map.hpp>
 #include <utils/types.hpp>
 #include <mutex>
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 #include <about.hpp>
 #include <crashlog.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 bool Loader::s_unloading = false;
 std::mutex g_unloadMutex;
@@ -32,10 +32,10 @@ Loader* Loader::get() {
 }
 
 void Loader::createDirectories() {
-    auto modDir = this->getGeodeDirectory() / GEODE_MOD_DIRECTORY;
-    auto logDir = this->getGeodeDirectory() / GEODE_LOG_DIRECTORY;
-    auto resDir = this->getGeodeDirectory() / GEODE_RESOURCE_DIRECTORY;
-    auto tempDir = this->getGeodeDirectory() / GEODE_TEMP_DIRECTORY;
+    auto modDir = this->getSapphireDirectory() / SAPPHIRE_MOD_DIRECTORY;
+    auto logDir = this->getSapphireDirectory() / SAPPHIRE_LOG_DIRECTORY;
+    auto resDir = this->getSapphireDirectory() / SAPPHIRE_RESOURCE_DIRECTORY;
+    auto tempDir = this->getSapphireDirectory() / SAPPHIRE_TEMP_DIRECTORY;
 
     ghc::filesystem::create_directories(resDir);
     ghc::filesystem::create_directory(modDir);
@@ -62,7 +62,7 @@ void Loader::addModResourcesPath(Mod* mod) {
 }
 
 void Loader::updateResourcePaths() {
-	auto resDir = this->getGeodeDirectory() / GEODE_RESOURCE_DIRECTORY;
+	auto resDir = this->getSapphireDirectory() / SAPPHIRE_RESOURCE_DIRECTORY;
     CCFileUtils::sharedFileUtils()->addSearchPath(resDir.string().c_str());
     for (auto const& [_, mod] : m_mods) {
         this->addModResourcesPath(mod);
@@ -120,8 +120,8 @@ size_t Loader::loadModsFromDirectory(
             continue;
         }
 
-        // skip this entry if its extension is not .geode 
-        if (entry.path().extension() != GEODE_MOD_EXTENSION) {
+        // skip this entry if its extension is not .sapphire 
+        if (entry.path().extension() != SAPPHIRE_MOD_EXTENSION) {
             continue;
         }
 
@@ -196,12 +196,12 @@ Result<> Loader::saveSettings() {
         json["mods"][id] = value;
     }
     json["succesfully-closed"] = true;
-    auto path = this->getGeodeSaveDirectory() / "mods.json";
+    auto path = this->getSapphireSaveDirectory() / "mods.json";
     return file_utils::writeString(path, json.dump(4));
 }
 
 Result<> Loader::loadSettings() {
-    auto path = this->getGeodeSaveDirectory() / "mods.json";
+    auto path = this->getSapphireSaveDirectory() / "mods.json";
     if (!ghc::filesystem::exists(path)) {
         return Ok();
     }
@@ -344,14 +344,14 @@ Loader::~Loader() {
     }
     m_logs.clear();
 
-    auto tempDir = this->getGeodeDirectory() / GEODE_TEMP_DIRECTORY;
+    auto tempDir = this->getSapphireDirectory() / SAPPHIRE_TEMP_DIRECTORY;
     ghc::filesystem::remove_all(tempDir);
 }
 
 void Loader::pushLog(LogPtr* logptr) {
     m_logs.push_back(logptr);
 
-    #ifdef GEODE_PLATFORM_CONSOLE
+    #ifdef SAPPHIRE_PLATFORM_CONSOLE
     if (InternalLoader::get()->platformConsoleReady()) {
         std::cout << logptr->toString(true);
     } else {
@@ -391,7 +391,7 @@ std::vector<LogPtr*> Loader::getLogs(
     return logs;
 }
 
-void Loader::queueInGDThread(std::function<void GEODE_CALL()> func) {
+void Loader::queueInGDThread(std::function<void SAPPHIRE_CALL()> func) {
     InternalLoader::get()->queueInGDThread(func);
 }
 
@@ -415,12 +415,12 @@ ghc::filesystem::path Loader::getSaveDirectory() const {
     );
 }
 
-ghc::filesystem::path Loader::getGeodeDirectory() const {
-    return geode::utils::dirs::geodeRoot() / GEODE_DIRECTORY;
+ghc::filesystem::path Loader::getSapphireDirectory() const {
+    return sapphire::utils::dirs::sapphireRoot() / SAPPHIRE_DIRECTORY;
 }
 
-ghc::filesystem::path Loader::getGeodeSaveDirectory() const {
-    return this->getSaveDirectory() / GEODE_DIRECTORY;
+ghc::filesystem::path Loader::getSapphireSaveDirectory() const {
+    return this->getSaveDirectory() / SAPPHIRE_DIRECTORY;
 }
 
 size_t Loader::getFieldIndexForClass(size_t hash) {

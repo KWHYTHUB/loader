@@ -9,7 +9,7 @@
 #include "InternalLoader.hpp"
 #include "InternalMod.hpp"
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 struct hook_info {
     Hook* hook;
@@ -22,8 +22,8 @@ struct hook_info {
 // between `addHook` and `loadHooks`
 
 
-GEODE_STATIC_VAR(std::vector<hook_info>, internalHooks);
-GEODE_STATIC_VAR(bool, readyToHook);
+SAPPHIRE_STATIC_VAR(std::vector<hook_info>, internalHooks);
+SAPPHIRE_STATIC_VAR(bool, readyToHook);
 
 
 Result<> Mod::enableHook(Hook* hook) {
@@ -46,7 +46,7 @@ Result<> Mod::enableHook(Hook* hook) {
 
 Result<> Mod::disableHook(Hook* hook) {
     if (hook->isEnabled()) {
-        if (geode::core::hook::remove(hook->m_handle)) {
+        if (sapphire::core::hook::remove(hook->m_handle)) {
             hook->m_enabled = false;
             return Ok<>();
         }

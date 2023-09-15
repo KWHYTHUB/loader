@@ -11,24 +11,24 @@ os.makedirs("tmp/Library/MobileSubstrate/DynamicLibraries/", exist_ok=True)
 os.makedirs("tmp/Applications/", exist_ok=True)
 os.makedirs("tmp/DEBIAN/", exist_ok=True)
 
-open("tmp/DEBIAN/control", "w").write("""Name: Geode Launcher
+open("tmp/DEBIAN/control", "w").write("""Name: Sapphire Launcher
 Architecture: iphoneos-arm
 Depends: com.cokepokes.libnotifications (>= 0.2-2)
 Description: Modding suite for Geometry Dash (test package!!)
 Maintainer: camila314
-Package: com.camila314.geode-test
+Package: com.camila314.sapphire-test
 Priority: optional
 Section: Tweaks
 Version: 0.1.0
 """)
 
-copy_tree("Geode Helper.app/", "tmp/Applications/Geode Helper.app/")
-copyfile("/Users/jakrillis/tmp/geode/loader/loader_ios/build/Geode.dylib", "bin/ios/Geode.dylib")
-os.system("ldid -S GeodeLauncher.dylib")
-os.system("ldid -S bin/ios/Geode.dylib")
-copyfile("GeodeLauncher.dylib", "tmp/Library/MobileSubstrate/DynamicLibraries/GeodeLauncher.dylib")
-copyfile("bin/ios/Geode.dylib", "tmp/Library/MobileSubstrate/DynamicLibraries/Geode.dylib")
+copy_tree("Sapphire Helper.app/", "tmp/Applications/Sapphire Helper.app/")
+copyfile("/Users/jakrillis/tmp/sapphire/loader/loader_ios/build/Sapphire.dylib", "bin/ios/Sapphire.dylib")
+os.system("ldid -S SapphireLauncher.dylib")
+os.system("ldid -S bin/ios/Sapphire.dylib")
+copyfile("SapphireLauncher.dylib", "tmp/Library/MobileSubstrate/DynamicLibraries/SapphireLauncher.dylib")
+copyfile("bin/ios/Sapphire.dylib", "tmp/Library/MobileSubstrate/DynamicLibraries/Sapphire.dylib")
 
-open("tmp/Library/MobileSubstrate/DynamicLibraries/GeodeLauncher.plist", "w").write("""{ Filter = { Bundles = ( "com.robtop.geometryjump" ); }; }""")
-os.system("dpkg-deb --build tmp geodeloader-test-arm64.deb")
+open("tmp/Library/MobileSubstrate/DynamicLibraries/SapphireLauncher.plist", "w").write("""{ Filter = { Bundles = ( "com.robtop.geometryjump" ); }; }""")
+os.system("dpkg-deb --build tmp sapphireloader-test-arm64.deb")
 rmtree("tmp")

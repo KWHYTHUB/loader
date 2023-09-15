@@ -4,7 +4,7 @@ class InternalMod;
 
 #include <loader/Mod.hpp>
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 class InternalLoader;
 

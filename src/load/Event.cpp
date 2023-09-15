@@ -1,7 +1,7 @@
 // // #include <loader/Event.hpp>
-// #include <Geode.hpp>
+// #include <Sapphire.hpp>
 
-// USE_GEODE_NAMESPACE();
+// USE_SAPPHIRE_NAMESPACE();
 
 // EventCenter* EventCenter::shared = nullptr;
 

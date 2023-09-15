@@ -1,9 +1,9 @@
 #include <utils/platform.hpp>
-#include <Geode.hpp>
+#include <Sapphire.hpp>
 
-#ifdef GEODE_IS_WINDOWS
+#ifdef SAPPHIRE_IS_WINDOWS
 
-USE_GEODE_NAMESPACE();
+USE_SAPPHIRE_NAMESPACE();
 
 #include <iostream>
 #include <sstream>
@@ -67,7 +67,7 @@ std::string utils::clipboard::read() {
     return text;
 }
 
-ghc::filesystem::path utils::dirs::geodeRoot() {
+ghc::filesystem::path utils::dirs::sapphireRoot() {
     return ghc::filesystem::path(CCFileUtils::sharedFileUtils()->getWritablePath2().c_str());
 }
 
@@ -76,7 +76,7 @@ bool utils::dirs::openFolder(ghc::filesystem::path const& path) {
 	return true;
 }
 
-void geode::utils::web::openLinkInBrowser(std::string const& url) {
+void sapphire::utils::web::openLinkInBrowser(std::string const& url) {
     ShellExecuteA(0, 0, url.c_str(), 0, 0, SW_SHOW);
 }
 
